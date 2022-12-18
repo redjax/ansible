@@ -1,0 +1,8 @@
+---
+# tasks file for cockpit
+
+- include_tasks: install-cockpit-debian-family.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+- include_tasks: configure-firewall-debian-family.yml
+  when: ansible_facts['os_family'] == "Debian"

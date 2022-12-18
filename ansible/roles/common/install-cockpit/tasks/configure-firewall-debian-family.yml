@@ -1,0 +1,11 @@
+---
+- name: "[Debian/Ubuntu][UFW] allow Cockpit port (9090)"
+  community.general.ufw:
+    rule: "allow"
+    port: "{{ item }}"
+    proto: "tcp"
+  with_items:
+    - "9090" # Cockpit
+  become: true
+  when: ansible_os_family == "Debian"
+  ignore_errors: true

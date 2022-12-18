@@ -118,6 +118,20 @@ The rest of the packages are optional, but might enhance desired operations, suc
 
 #### Rebooting when
 
+# Notes & Links
+
+## Notes
+
+### Troubleshooting
+
+#### ERROR! couldn't resolve module/action 'community.general.ufw'
+
+**Solution**
+
+Add the `community.general` collection from Ansible Galaxy
+
+`$ ansible-galaxy collection install community.general`
+
 ## Links
 
 - Ansible Documentation Links
