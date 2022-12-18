@@ -137,3 +137,4 @@ The rest of the packages are optional, but might enhance desired operations, suc
 - [Ansible get release name (i.e. "Jammy" for Ubuntu) from facts](https://superuser.com/a/1010846)
 - [Ansible define multiple 'when' conditions](https://www.cyberciti.biz/faq/how-to-define-multiple-when-conditions-in-ansible/)
 - [Ansible include tasks from role in playbook file](https://www.toptechskills.com/ansible-tutorials-courses/ansible-include-import-tasks-tutorial-examples/)
+- [Reddit: Project directory structure](https://www.reddit.com/r/devops/comments/tvf1bo/comment/i39u2ox/?utm_source=share&utm_medium=web2x&context=3)
