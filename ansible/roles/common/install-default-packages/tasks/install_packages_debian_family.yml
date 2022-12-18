@@ -19,6 +19,6 @@
     - "ncdu"
     - "arp-scan"
     - "python3-pip"
-    - "python3.10-venv"
+    - "python3-venv"
     - "python3-argcomplete"
   when: ansible_facts['os_family'] == "Debian"
