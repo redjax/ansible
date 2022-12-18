@@ -1,0 +1,13 @@
+---
+- name: Check if installer file exists
+  stat:
+    path: "/home/{{ remote_host_user }}/duplicati_{{ duplicati_ver }}_all.deb"
+  become: true
+  register: duplicati_deb_installer_file
+
+- name: Remove Duplicati installer file
+  file:
+    path: "/home/{{ remote_host_user }}/duplicati_{{ duplicati_ver }}_all.deb"
+    state: absent
+  become: true
+  when: ansible_facts['os_family'] == "Debian"
