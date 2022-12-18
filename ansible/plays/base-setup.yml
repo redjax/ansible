@@ -1,0 +1,10 @@
+---
+- name: Configure systems using Ansible Roles
+  hosts: all
+  
+  vars_files:
+    - ../group_vars/all/setup.yml
+    - ../group_vars/all/install_vars.yml
+
+  roles:
+    - ../roles/install-default-packages

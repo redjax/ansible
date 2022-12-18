@@ -1,0 +1,3 @@
+---
+# vars file for roles/docker-setup
+ubuntu_release: "jammy"

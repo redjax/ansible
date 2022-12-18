@@ -1,0 +1,23 @@
+**/*.log
+**/*.log.*
+
+##########
+# Poetry #
+##########
+**/poetry.lock
+**/*.venv
+
+###########
+# Ansible #
+###########
+
+## Ignore inventory files
+**/inventories/**/*.yml
+
+## Allow example files
+!**/*.example
+!**/*.example.*
+!**/*_example
+!**/*_example.*
+!**/example_*
+!**/example_*.*

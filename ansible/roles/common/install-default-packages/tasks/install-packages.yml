@@ -1,0 +1,47 @@
+---
+## Debian
+- name: Install required packages on Debian family OS
+  become: true
+  apt:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - "htop"
+    - "git"
+    - "dos2unix"
+    - "wget"
+    - "curl"
+    - "neovim"
+    - "tmux"
+    - "unzip"
+    - "zip"
+    - "ncdu"
+    - "arp-scan"
+    - "python3-pip"
+    - "python3.10-venv"
+    - "python3-argcomplete"
+  when: ansible_os_family == "Debian"
+
+## RedHat
+- name: Install required packages on RedHat family OS
+  become: true
+  yum:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - "htop"
+    - "git"
+    - "dos2unix"
+    - "wget"
+    - "curl"
+    - "neovim"
+    - "tmux"
+    - "zip"
+    - "unzip"
+    - "ncdu"
+    - "arp-scan"
+    - "python3"
+    - "python3-pip"
+    - "python3.10-venv"
+    - "python3-argcomplete"
+  when: ansible_os_family == "RedHat"
