@@ -1,0 +1,6 @@
+---
+- name: Install Proxmox QEMU guest agent
+  hosts: all
+
+  roles:
+    - ../../roles/common/install-proxmox-qemu-agent

@@ -1,0 +1,8 @@
+---
+# tasks file for proxmox_qemu_agent
+
+- include_tasks: install_qemu_guest_agent_debian_family.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+- include_tasks: qemu_guest_agent_service_debian_family.yml
+  when: ansible_facts['os_family'] == "Debian"

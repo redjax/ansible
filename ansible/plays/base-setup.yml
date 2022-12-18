@@ -4,3 +4,5 @@
 
   roles:
     - ../roles/common/install-default-packages
+    - ../roles/common/install-duplicati
+    - ../roles/common/install-tailscale
