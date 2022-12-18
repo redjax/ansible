@@ -1,54 +1,140 @@
 # Description
 
+My Ansible monorepo. Includes my roles, playbooks, & inventory files.
+
+This repository is a refactor of [my old Ansible repository](https://gitlab.com/redjax/ansihost). It will be missing some things for a while as I re-work roles, playbooks, and directory structure.
+
+This repository uses [Python Poetry](https://python-poetry.org) to stage the Ansible environment. To run this without a Python `virtualenv`, check the [Run without virtualenv](#run-without-virtualenv) section for instructions on installing dependencies straight to the host.
+
 ## Included modules
 
-- [yamllint](https://yamllint.readthedocs.io/en/stable/quickstart.html#running-yamllint)
-  - Lint `.yaml` files for key repetition, syntax, etc
-  - Examples:
-    - `$ yamllint file.yml other-file.yaml`
-    - `$ yamllint .`
-    - `$ yamllint file.yml -f colored`
-- [ARA Records Ansible](https://github.com/ansible-community/ara)
-  - Records `ansible`/`ansible-playbook` commands, wherever they are run from
-    - Terminal (by hand or a script)
-    - Laptop, desktop, server, vm, or container
-    - CI
-- [Ansible Runner](https://ansible-runner.readthedocs.io/en/stable/)
-- [Ansible Doctor](https://ansible-doctor.geekdocs.de/usage/getting-started/)
-  - Document Ansible files with annotations
-  - Intented to be run from a CI pipeline
-- [Molecule](https://molecule.readthedocs.io/en/latest/getting-started.html)
-  - Aids in the developement & testing of Ansible roles/playbooks
-- [Ansible Navigator](https://github.com/ansible/ansible-navigator)
-  - Text based user interface (TUI) for Ansible
-- [PDM](https://pdm.fming.dev/latest/)
-  - Python Dependency Manager
-  - Alternative to `Poetry`
-  - Install:
-    - `pipx install pdm`
-  - Usage:
-    - `pdm install`
-    - `pdm sync`
-      - Installs from lockfile
-      - `--clean`: removes packages no longer in the lockfile
-      - `--only-keep`
-    - `pdm list`
-      - List dependencies
-  - [User scripts](https://pdm.fming.dev/latest/usage/scripts/#user-scripts)
+This repository uses [Python Poetry](https://python-poetry.org) to stage the Ansible environment. `Poetry` Installs environment from `pyproject.toml`.
 
-> [tool.pdm.scripts]
-> start = "flask run -p 54321"
+Run `$ poetry install` after cloning repo to setup Ansible environment
 
-`$ pdm run start`
+- **Packages installed by Poetry**
+  - [yamllint](https://yamllint.readthedocs.io/en/stable/quickstart.html#running-yamllint)
+    - Lint `.yaml` files for key repetition, syntax, etc
+    - Examples:
+      - `$ yamllint file.yml other-file.yaml`
+      - `$ yamllint .`
+      - `$ yamllint file.yml -f colored`
+  - [ARA Records Ansible](https://github.com/ansible-community/ara)
+    - Records `ansible`/`ansible-playbook` commands, wherever they are run from
+      - Terminal (by hand or a script)
+      - Laptop, desktop, server, vm, or container
+      - CI
+  - [Ansible Runner](https://ansible-runner.readthedocs.io/en/stable/)
+  - [Ansible Doctor](https://ansible-doctor.geekdocs.de/usage/getting-started/)
+    - Document Ansible files with annotations
+    - Intented to be run from a CI pipeline
+  - [Molecule](https://molecule.readthedocs.io/en/latest/getting-started.html)
+    - Aids in the developement & testing of Ansible roles/playbooks
+  - [Ansible Navigator](https://github.com/ansible/ansible-navigator)
+    - Text based user interface (TUI) for Ansible
+  - [Ansible Lint](ansible-lint.readthedocs.io/)
+    - Lint Ansible `.yml` files
+    - Usage:
+      - `$ ansible-lint /path/to/file-to-lint.yml`
+
+## Run without virtualenv
+
+If you would like to use another dependency manager (i.e. [PDM](pdm.fming.dev/)), or would prefer to just `pip install $pkg` straight to your host environment, make sure to install each of the dependencies in [the included modules](#included-modules) > "Packages installed by Poetry" section.
+
+At minimum, to run Ansible playbooks and commands from this repository, you will need:
+
+- ansible
+
+The rest of the packages are optional, but might enhance desired operations, such as [Molecule](https://molecule.readthedocs.io/en/latest/getting-started.html) which aids in testing roles.
 
 # Notes & Links
 
 ## Notes
 
+### Playbook step examples
+
+#### APT Update/Upgrade
+
+```
+- name: Update apt cache & upgrade packages
+  become: true
+  ansible.builtin.apt:
+    upgrade: true
+    update_cache: true
+    cache_valid_time: 86400  # 1 day
+  when: ansible_facts['os_family'] == "Debian"
+```
+
+#### APT update cache only
+
+```
+- name: Update apt cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 86400  # 1 day
+  when: ansible_facts['os_family'] == "Debian"
+```
+
+#### Install packages with APT
+
+```
+- name: Install packages with apt
+  become: true
+  apt:
+    name: "{{ item }}"
+
+```
+
+#### Upgrade packages with APT
+
+```
+- name: Upgrade all packages
+  apt:
+    upgrade: dist
+    # force_apt_get: yes
+  become: true
+```
+
+#### Check if Debian family server needs reboot
+
+```
+- name: Check if a reboot is needed
+  register: reboot_required
+  stat:
+    path: /var/run/reboot-required
+    get_md5: false
+
+- name: Reboot server
+  ansible.builtin.reboot:
+    msg: "Reboot initiated by Ansible due to kernel updates"
+    connect_timeout: 5
+    reboot_timeout: 300
+    pre_reboot_delay: 0
+    post_reboot_delay: 30
+    test_command: uptime
+  when: reboot_rquired.stat.exists
+```
+
+#### Rebooting when
+
 ## Links
+
+- Ansible Documentation Links
+  - [Ansible Facts: Distribution](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html#ansible-facts-distribution)
+  - [Ansible apt_key module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_key_module.html)
+  - [Ansible apt_repository module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_repository_module.html)
+  - [Ansible facts & magic variables](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html)
+  - [Ansible ignore failed commands](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_error_handling.html#:~:text=By%20default%20Ansible%20stops%20executing,in%20spite%20of%20the%20failure.&text=The%20ignore_errors%20directive%20only%20works,a%20value%20of%20'failed'.)
+  - [Ansible ignore unreachable hosts](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_error_handling.html#ignoring-unreachable-host-errors)
 
 - [Ansible Real Life Good Practices](https://reinteractive.com/articles/Ansible-Real-Life-Good-Practices)
 - [Ansible best practices (2017)](https://andidog.de/blog/2017-04-24-ansible-best-practices)
 - [Git Ansible](https://adamtheautomator.com/git-ansible/)
   - Git operations (public & private repos) in Ansible playbooks
 - [Testing your Ansible roles with Molecule](https://www.jeffgeerling.com/blog/2018/testing-your-ansible-roles-molecule)
+- [Ansible apt update all packages on Ubuntu/Debian](https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/)
+- [Ansible get release name (i.e. "Jammy" for Ubuntu) from facts](https://superuser.com/a/1010846)
+- [Ansible define multiple 'when' conditions](https://www.cyberciti.biz/faq/how-to-define-multiple-when-conditions-in-ansible/)
+- [Ansible include tasks from role in playbook file](https://www.toptechskills.com/ansible-tutorials-courses/ansible-include-import-tasks-tutorial-examples/)
+- [Reddit: Project directory structure](https://www.reddit.com/r/devops/comments/tvf1bo/comment/i39u2ox/?utm_source=share&utm_medium=web2x&context=3)
