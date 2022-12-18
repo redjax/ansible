@@ -1,2 +1,7 @@
 ---
 # tasks file for install-default-packages
+- include_tasks: install_packages_debian_family.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+- include_tasks: install_packages_redhat_family.yml
+  when: ansible_facts['os_family'] == "RedHat"
