@@ -1,0 +1,6 @@
+---
+- name: Configure git settings, keys
+  hosts: all
+
+  roles:
+    - ../../roles/common/configure-git
