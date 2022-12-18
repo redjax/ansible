@@ -1,0 +1,42 @@
+---
+
+## Run apt update on RedHat family OSs
+- name: "[RedHat Family] [Docker Setup] Perform yum cache update"
+  ansible.builtin.yum:
+    update_cache: true
+  become: true
+  when: (ansible_facts['os_family'] == "RedHat")
+
+## Ubuntu: Add Docker repository
+- name: "[RedHat Family] [Docker Setup] Add Docker repository"
+  ansible.builtin.yum_repository:
+    name: docker
+    description: "Docker Community Edition repository"
+    baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
+  become: true
+  when: (ansible_facts['os_family'] == "RedHat")
+
+## Run apt update on RedHat family OSs
+- name: "[RedHat Family] [Docker Setup] Update yum cache update after adding Docker repo"
+  ansible.builtin.yum:
+    update_cache: true
+  become: true
+  when: (ansible_facts['os_family'] == "RedHat")
+
+- name: "[RedHat Family] [Docker Setup] Install Docker, Compose"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - "docker-ce"
+    - "docker-ce-cli"
+    - "containerd.io"
+    - "docker-compose-plugin"
+  when: (ansible_facts['os_family'] == "RedHat")
+
+- name: "[RedHat Family] [Docker Setup] Start Docker systemd service"
+  become: true
+  ansible.builtin.systemd:
+    name: docker
+    state: started
