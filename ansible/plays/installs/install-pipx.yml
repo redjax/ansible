@@ -1,0 +1,8 @@
+---
+- name: "Install Pipx"
+  hosts: all
+
+  tasks:
+    - include_role:
+        name: ../../roles/common/install-pipx
+        tasks_from: install_pipx.yml

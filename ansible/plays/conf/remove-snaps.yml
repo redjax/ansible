@@ -1,0 +1,6 @@
+---
+- name: "Remove snaps"
+  hosts: all
+
+  roles:
+    - ../../roles/common/remove-snaps
