@@ -1,0 +1,6 @@
+---
+- name: Install Tmux
+  hosts: all
+
+  roles:
+    - ../../roles/common/install-tmux

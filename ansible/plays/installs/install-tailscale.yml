@@ -1,0 +1,8 @@
+---
+- name: Install Tailscale
+  hosts: all
+
+  vars_files:
+
+  roles:
+    - ../../roles/common/install-tailscale

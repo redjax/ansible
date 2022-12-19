@@ -1,0 +1,29 @@
+---
+
+# - name: "[Ubuntu] Add backports repo, install Cockpit"
+#   ansible.builtin.apt:
+#     name: "{{ item }}"
+#     state: present
+#   with_items:
+#     - "{{ ansible_distribution_release | lower }}-backports cockpit"
+#   become: true
+#   when: ansible_distribution == "Ubuntu"
+
+- name: "[Debian] [Cockpit] Add backports repo"
+  ansible.builtin.apt_repository:
+    repo: "deb http://deb.debian.org/debian {{ ansible_distribution_release | lower }}-backports main"
+    state: present
+    filename: backports.list
+    update_cache: true
+  become: true
+  when: ansible_distribution == "Debian"
+
+- name: "[Debian Family] [Cockpit] Install Cockpit"
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items:
+    - "cockpit"
+  when: ansible_facts['os_family'] == "Debian"

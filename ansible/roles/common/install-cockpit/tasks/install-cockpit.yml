@@ -1,0 +1,32 @@
+---
+- name: Get release codename for Debian/Ubuntu
+  shell: |
+    . /etc/os-release && echo ${VERSION_CODENAME}
+  register: release_codename
+  when: ansible_os_family == "Debian"
+
+- name: "[Ubuntu] Add backports repo, install Cockpit"
+  shell: |
+    . /etc/os-release && sudo apt install -y -t {{ release_codename.stdout }}-backports cockpit
+  become: true
+  when: ansible_distribution == "Ubuntu"
+
+- name: "[Debian] Add backports repo"
+  shell: |
+    . /etc/os-release && echo "deb http://deb.debian.org/debian {{ release_codename.stdout }}-backports main" > /etc/apt/sources.list.d/backports.list \
+  become: true
+  when: ansible_distribution == "Debian"
+
+- name: "[Debian] Update apt repo and cache"
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+  become: true
+  when: ansible_distribution == "Debian"
+
+- name: "[Debian] Install Cockpit"
+  shell: |
+    apt install -y cockpit
+  become: true
+  when: ansible_os_family == "Debian"
