@@ -1,0 +1,6 @@
+---
+- name: Install Cockpit
+  hosts: all
+
+  roles:
+    - ../../roles/common/install-cockpit

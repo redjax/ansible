@@ -1,0 +1,6 @@
+---
+- name: Configure dotfiles
+  hosts: all
+
+  roles:
+    - ../../roles/common/configure-dotfiles

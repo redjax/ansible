@@ -1,0 +1,24 @@
+---
+## Get all installed packages
+- name: "[All OS Types] [Neovim] Check packages"
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: "[Debian Family] [Neovim] Download NodeJS {{ nodejs_ver }} installer"
+  get_url:
+    url: https://deb.nodesource.com/setup_{{ nodejs_ver }}
+    dest: /tmp/node_setup.sh
+    mode: "0664"
+  become: true
+  when: (ansible_facts['os_family'] == "Debian") and ("nodejs" not in ansible_facts.packages)
+
+- name: "[Debian Family] [Neovim] Install NodeJS {{ nodejs_ver }}"
+  shell: "bash /tmp/node_setup.sh"
+  become: true
+  when: (ansible_facts['os_family'] == "Debian") and ("nodejs" not in ansible_facts.packages)
+
+- name: "[Debian Family] [Neovim] Remove NodeJS {{ nodejs_ver }} installer"
+  file:
+    path: "/tmp/node_setup.sh"
+    state: absent
+  become: true

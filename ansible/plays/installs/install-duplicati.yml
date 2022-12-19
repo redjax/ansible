@@ -1,0 +1,6 @@
+---
+- name: Install Duplicati
+  hosts: all
+
+  roles:
+    - ../../roles/common/install-duplicati

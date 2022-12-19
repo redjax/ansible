@@ -1,0 +1,6 @@
+---
+- name: Install Neovim
+  hosts: all
+
+  roles:
+    - ../../roles/common/install-neovim

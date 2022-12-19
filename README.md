@@ -51,6 +51,29 @@ The rest of the packages are optional, but might enhance desired operations, suc
 
 ## Notes
 
+### Run only certain tasks from role in a playbook
+
+In a playbook, you can include a role and only include tasks from a specific file in the role's `tasks/` directory. For example, the `install-neovim` role installs `nodejs` in the `tasks/install_nodejs_{debian/redhat}_family.yml` task file. The following playbook, called `install-neovim.yml`, will run the `install_nodejs` playbook from the `install-neovim` role:
+
+```
+---
+- name: Install NodeJS
+  hosts: all
+
+  tasks:
+    ## Debian
+    - include_role:
+        name: ../../roles/common/install-neovim
+        tasks_from: install_nodejs_debian_family.yml
+      when: ansible_facts['os_family'] == "Debian"
+
+    ## Redhat
+    - include_role:
+        name: ../../roles/common/install-neovim
+        tasks_from: install_nodejs_redhat_family.yml
+      when: ansible_facts['os_family'] == "RedHat"
+```
+
 ### Playbook step examples
 
 #### APT Update/Upgrade
@@ -118,6 +141,28 @@ The rest of the packages are optional, but might enhance desired operations, suc
 
 #### Rebooting when
 
+# Notes & Links
+
+## Notes
+
+### Troubleshooting
+
+#### ERROR! couldn't resolve module/action 'community.general.ufw'
+
+**Solution**
+
+Add the `community.general` collection from Ansible Galaxy
+
+`$ ansible-galaxy collection install community.general`
+
+#### ERROR! couldn't resolve module/action 'ansible.posix.firewalld'
+
+**Solution**
+
+Add the `ansible.posix` collection from Ansible Galaxy
+
+`$ ansible-galaxy collection install ansible.posix`
+
 ## Links
 
 - Ansible Documentation Links
@@ -137,3 +182,4 @@ The rest of the packages are optional, but might enhance desired operations, suc
 - [Ansible get release name (i.e. "Jammy" for Ubuntu) from facts](https://superuser.com/a/1010846)
 - [Ansible define multiple 'when' conditions](https://www.cyberciti.biz/faq/how-to-define-multiple-when-conditions-in-ansible/)
 - [Ansible include tasks from role in playbook file](https://www.toptechskills.com/ansible-tutorials-courses/ansible-include-import-tasks-tutorial-examples/)
+- [Reddit: Project directory structure](https://www.reddit.com/r/devops/comments/tvf1bo/comment/i39u2ox/?utm_source=share&utm_medium=web2x&context=3)

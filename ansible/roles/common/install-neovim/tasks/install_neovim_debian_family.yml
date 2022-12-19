@@ -1,0 +1,14 @@
+---
+- name: Install dependencies
+  apt:
+    name: ["curl", "git"]
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Install neovim
+  apt:
+    name: ["neovim", "python3-neovim"]
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
