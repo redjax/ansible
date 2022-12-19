@@ -155,6 +155,14 @@ Add the `community.general` collection from Ansible Galaxy
 
 `$ ansible-galaxy collection install community.general`
 
+#### ERROR! couldn't resolve module/action 'ansible.posix.firewalld'
+
+**Solution**
+
+Add the `ansible.posix` collection from Ansible Galaxy
+
+`$ ansible-galaxy collection install ansible.posix`
+
 ## Links
 
 - Ansible Documentation Links
