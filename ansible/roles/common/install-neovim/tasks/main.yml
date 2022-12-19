@@ -1,6 +1,7 @@
 ---
 # tasks file for roles/common/configure-neovim
-## Check if NodeJS is installed using Ansible facts
+
+## Get all installed packages
 - name: "[All OS Types] [Neovim] Check packages"
   ansible.builtin.package_facts:
     manager: auto
