@@ -147,6 +147,8 @@ In a playbook, you can include a role and only include tasks from a specific fil
 
 ### Troubleshooting
 
+---
+
 #### ERROR! couldn't resolve module/action 'community.general.ufw'
 
 **Solution**
@@ -155,6 +157,8 @@ Add the `community.general` collection from Ansible Galaxy
 
 `$ ansible-galaxy collection install community.general`
 
+---
+
 #### ERROR! couldn't resolve module/action 'ansible.posix.firewalld'
 
 **Solution**
@@ -162,6 +166,28 @@ Add the `community.general` collection from Ansible Galaxy
 Add the `ansible.posix` collection from Ansible Galaxy
 
 `$ ansible-galaxy collection install ansible.posix`
+
+---
+
+#### ERROR! couldn't resolve module/action 'community.crypto.openssh_keypair'
+
+**Solution**
+
+Add the `community.crypto` collection from Ansible Galaxy
+
+`$ ansible-galaxy collection install community.crypto`
+
+---
+
+#### ERROR! couldn't resolve module/action 'pipx'
+
+**Solution**
+
+Add the `community.general` collection from Ansible Galaxy
+
+`$ ansible-galaxy collection install community.general`
+
+---
 
 ## Links
 
