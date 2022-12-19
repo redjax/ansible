@@ -8,3 +8,6 @@
     - ../roles/common/install-tmux
     - ../roles/common/install-duplicati
     - ../roles/common/install-tailscale
+    - ../roles/common/remove-snaps
+    - ../roles/security/install-firewall
+    - ../roles/security/ssh-setup
