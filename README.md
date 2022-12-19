@@ -51,7 +51,68 @@ The rest of the packages are optional, but might enhance desired operations, suc
 
 ## Notes
 
-### Run only certain tasks from role in a playbook
+### Create a new role
+
+Creating a new role involves the following flow:
+
+* (Optional, if using `Poetry` environment) Activate poetry env from git root
+  * `$ poetry shell`
+* Change directory to `ansible`
+  * `$ cd ansible`
+* Initialize a new role
+  * `$ ansible-galaxy init roles/path/to/new-role-name`
+* Add tasks/files/templates/ etc to the new role
+* Create a playbook for the role in `plays/`
+  * Check notes in [Create playbook for a role](#create-playbook-for-a-role) section to build your playbook
+  * The repo is currently divided into `conf/`, `fixes/`, and `installs/` playbook types for organization
+  * Any playbooks in the root directory are meant to be run on a completely fresh install, or do too much to be grouped into a subdirectory
+
+### Create playbook for a role
+
+After creating a new role, create a playbook to launch the role in `plays/`. Try to follow the existing directory structure to maintain organization.
+
+**Example: Create playbook for install-app**
+
+* `roles/common/install-app` directory structure:
+
+```
+...
+
+tasks/
+  configure.yml
+  install.yml
+  main.yml
+
+...
+```
+
+* To create a playbook that runs the entire role, defined in `tasks/main.yml`:
+
+```
+## plays/installs/install-app.yml
+---
+- name: "Install app"
+  hosts: all
+
+  roles:
+    - ../roles/path/to/role-name
+```
+
+* To create a playbook that only runs certain tasks from a role, i.e. a playbook to run configuration tasks for app defined in `roles/common/install-app`
+
+```
+## plays/conf/configure-app.yml
+---
+- name: "Configure app"
+  hosts: all
+
+  tasks:
+    - include_role:
+        name: ../../roles/common/install-app
+        tasks_from: configure.yml
+```
+
+#### Run only certain tasks from role in a playbook
 
 In a playbook, you can include a role and only include tasks from a specific file in the role's `tasks/` directory. For example, the `install-neovim` role installs `nodejs` in the `tasks/install_nodejs_{debian/redhat}_family.yml` task file. The following playbook, called `install-neovim.yml`, will run the `install_nodejs` playbook from the `install-neovim` role:
 
