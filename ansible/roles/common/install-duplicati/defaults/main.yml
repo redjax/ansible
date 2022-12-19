@@ -1,2 +1,3 @@
 ---
 # defaults file for duplicati
+duplicati_web_port: 8200

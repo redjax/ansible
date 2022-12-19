@@ -1,0 +1,21 @@
+---
+- name: Install NodeJS
+  dnf:
+    # Install command for nodejs is: dnf module install nodejs:<stream>
+    #   Use "@pkgname" in Ansible to denote module install
+    name: "@nodejs:{{ nodejs_stream }}"
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Install corepack in Redhat
+  shell: |
+    npm install -g corepack
+  become: true
+  when: ansible_os_family == "RedHat"
+
+# Enable corepack
+- name: "[SHELL] Enable corepack"
+  shell: corepack enable
+  become: true
+  when: ansible_os_family == "Debian"

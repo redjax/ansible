@@ -1,0 +1,71 @@
+---
+## FILE/DIRECTORY CHECKS
+- name: Check if .config dir exists
+  stat:
+    path: "/home/{{ remote_host_user }}/.config/"
+  become: true
+  register: home_config_dir
+
+- name: Check if nvim directory exists
+  stat:
+    path: "/home/{{ remote_host_user }}/.config/nvim/"
+  become: true
+  register: nvim_conf_dir
+
+- name: Create .config directory
+  file:
+    path: "/home/{{ remote_host_user }}/.config"
+    mode: "0777"
+    state: directory
+  become: true
+  when: not home_config_dir.stat.exists
+
+- name: Copy nvim configuration
+  copy:
+    src: nvim
+    dest: "/home/{{ remote_host_user }}/.config/"
+    owner: "{{ remote_host_user }}"
+    group: "{{ remote_host_user }}"
+    mode: "0775"
+  become: true
+  when: not nvim_conf_dir.stat.exists
+
+# Install neovim npm package
+- name: Run node install for neovim
+  shell: npm install -g neovim
+  become: true
+
+# Install neovim yarn package
+- name: Run yarn install for neovim
+  shell: yarn global add neovim
+  become: true
+
+# Install neovim npm package
+- name: "[All OS Types] [Neovim] Run node install for neovim"
+  shell: npm install -g neovim
+  become: true
+
+# Install neovim yarn package
+- name: "[All OS Types] [Neovim] Run yarn install for neovim"
+  shell: yarn global add neovim
+  become: true
+
+# Run nvim and call PlugInstall
+- name: "[Debian Family] [Neovim] Install nvim plugins"
+  shell: nvim "+PlugInstall" "+qall"
+
+# Run nvim and update plugins
+- name: "[All OS Types] [Neovim] Update nvim plugins"
+  shell: nvim "+PlugUpdate" "+qall"
+
+# Run nvim, run coc#util#install() command, exit
+- name: "[All OS Types] [Neovim] Initialize nvim COC"
+  shell: nvim --headless "+call coc#util#install()" +qall
+
+# Run nvim, install coc-pyright for python3
+- name: "[All OS Types] [Neovim] Install coc-pyright"
+  shell: nvim --headless "+call CocInstall coc-pyright" +qall
+
+# Run nvim, install coc-html
+- name: "[All OS Types] [Neovim] Install coc-html"
+  shell: nvim --headless "+call CocInstall coc-html" +qall
