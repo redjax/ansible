@@ -1,0 +1,5 @@
+---
+- name: Configure systems using Ansible Roles
+
+  roles:
+    - ../roles/common/install-default-packages
