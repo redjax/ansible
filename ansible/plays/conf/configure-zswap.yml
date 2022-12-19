@@ -1,0 +1,6 @@
+---
+- name: "[Ubuntu] Enable ZSWAP"
+  hosts: all
+
+  roles:
+    - ../../roles/common/configure-zswap
