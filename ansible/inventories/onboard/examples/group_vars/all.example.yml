@@ -1,0 +1,42 @@
+###########
+# Ansible #
+###########
+ansible_python_interpreter: "/usr/bin/python3"
+ansible_ssh_private_key_file: "/home/remoteuser/.ssh/cybernex_id_rsa"
+
+##########
+# Docker #
+##########
+compose_ver: "2.6.0"
+platform: "linux"
+ubuntu_release: "jammy"
+debian_release: "bullseye"
+
+#############
+# Duplicati #
+#############
+duplicati_ver: "linux"
+
+###########
+# Node.JS #
+###########
+nodejs_ver: "16.x"  ## For Debian-family OS
+nodejs_stream: "16"  ## For RedHat-family OS
+
+#################
+# Python/Poetry #
+#################
+python_ver: "3.10"
+poetry_ver: "1.2.2"
+
+##########
+# Webmin #
+##########
+webmin_admin_pass: ""
+
+#############
+# Tailscale #
+#############
+
+## https://tailscale.com/kb/1085/auth-keys/
+tailscale_preauth_key: ""
