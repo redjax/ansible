@@ -1,0 +1,43 @@
+---
+
+- name: "[RedHat Family] [Duplicati] Create systemd service for Duplicati"
+  template:
+    src: duplicati.service.j2
+    dest: /etc/systemd/system/duplicati.service
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: "[RedHat Family] [Duplicati] Create Duplicati config"
+  template:
+    src: duplicati.j2
+    dest: /etc/default/duplicati
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+
+- name: "[Firewalld] Allow Duplicati port (8200)"
+  firewalld:
+    port: "8200"
+    permanent: yes
+    state: enabled
+  become: true
+  when: ansible_facts['os_family'] == "RedHat"
+  ignore_errors: true
+
+- name: Restart firewalld service
+  service:
+    name: "firewalld"
+    state: "restarted"
+  become: true
+  when: ansible_os_family == "Redhat"
+
+- name: Start & enable Duplicati service
+  service:
+    name: duplicati
+    enabled: true
+    state: started
+  become: true

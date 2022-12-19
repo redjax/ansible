@@ -1,5 +1,10 @@
 ---
 - name: Configure systems using Ansible Roles
+  hosts: all
 
   roles:
     - ../roles/common/install-default-packages
+    - ../roles/common/install-neovim
+    - ../roles/common/install-tmux
+    - ../roles/common/install-duplicati
+    - ../roles/common/install-tailscale

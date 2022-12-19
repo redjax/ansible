@@ -1,0 +1,10 @@
+---
+- name: "[Firewalld] allow Cockpit port (9090)"
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - "9090/tcp" # Cockpit
+  become: true
+  when: ansible_os_family == "Redhat"

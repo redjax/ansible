@@ -1,0 +1,8 @@
+---
+- name: Enable firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+  become: true
+  when: ansible_os_family == "Redhat"

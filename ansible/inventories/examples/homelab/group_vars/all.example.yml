@@ -10,3 +10,12 @@ ansible_ssh_private_key_file: "/home/user/.ssh/ansible_id_rsa"
 
 ## For path substitution, i.e. "/home/{{ remote_host_user }}"
 remote_host_user: "exampleuser"
+
+tailscale_preauth_key: ""
+
+#######
+# Git #
+#######
+git_default_branch_name: "main"
+git_user_name: "username"
+git_user_eail: "email@example.com"

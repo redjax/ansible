@@ -1,0 +1,23 @@
+---
+# tasks file for roles/common/install-tmux
+
+## Get all installed packages
+- name: "[All OS Types] [Tmux] Check packes"
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: "[Debian Family] [Tmux] Install Tmux"
+  include_tasks: install_tmux_debian_family.yml
+  when: (ansible_facts['os_family'] == "Debian") and ("tmux" not in ansible_facts.packages)
+
+- name: "[RedHat Family] [Tmux] Install Tmux"
+  include_tasks: install_tmux_redhat_family.yml
+  when: (ansible_facts['os_family'] == "RedHat") and ("tmux" not in ansible_facts.packages)
+
+- name: "[All OS Types] [Tmux] Configure Tmux"
+  include_tasks: configure_tmux.yml
+  # when: ("tmux" in ansible_facts.packages)
+
+- name: "[All OS Types] [Tmux] Install Tmux plugins"
+  include_tasks: install_tmux_plugins.yml
+  # when: ("tmux" in ansible_facts.packages)

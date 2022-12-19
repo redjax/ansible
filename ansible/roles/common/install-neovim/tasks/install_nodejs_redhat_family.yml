@@ -1,0 +1,26 @@
+---
+## Get all installed packages
+- name: "[All OS Types] [Neovim] Check packages"
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Install NodeJS
+  dnf:
+    # Install command for nodejs is: dnf module install nodejs:<stream>
+    #   Use "@pkgname" in Ansible to denote module install
+    name: "@nodejs:{{ nodejs_stream }}"
+    state: present
+  become: true
+  when: (ansible_facts['os_family'] == "RedHat") and ("nodejs" not in ansible_facts.packages)
+
+- name: Install corepack in Redhat
+  shell: |
+    npm install -g corepack
+  become: true
+  when: (ansible_facts['os_family'] == "RedHat") and ("nodejs" not in ansible_facts.packages)
+
+# Enable corepack
+- name: "[SHELL] Enable corepack"
+  shell: corepack enable
+  become: true
+  when: (ansible_facts['os_family'] == "RedHat") and ("nodejs" not in ansible_facts.packages)
