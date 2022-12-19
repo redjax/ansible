@@ -1,0 +1,12 @@
+---
+- name: "[All OS Types] [SSH] Generate host SSH keypair"
+  include_tasks: generate_host_key.yml
+  ignore_errors: true
+
+- name: "[All OS Types] [SSH] Generate Gitlab SSH keypair"
+  include_tasks: generate_gitlab.yml
+  ignore_errors: true
+
+- name: "[All OS Types] [SSH] Generate Github SSH keypair"
+  include_tasks: generate_github.yml
+  ignore_errors: true
