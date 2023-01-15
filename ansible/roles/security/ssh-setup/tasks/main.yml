@@ -15,5 +15,5 @@
   ignore_errors: true
 
 - name: "[All OS Types] [SSH] Fix owner of ~/.ssh dir"
-  inclue_tasks: fix_ssh_dir_owner.yml
+  include_tasks: fix_ssh_dir_owner.yml
   ignore_errors: true
