@@ -21,3 +21,4 @@
 !**/*_example.*
 !**/example_*
 !**/example_*.*
+.pdm-python
