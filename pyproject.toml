@@ -17,3 +17,7 @@ dependencies = [
 ]
 requires-python = ">=3.11"
 license = {text = "MIT"}
+
+[tool.pdm.scripts]
+
+auto-reboot = { shell = "cd ansible && pdm run ansible-playbook -i inventories/homelab/inventory.yml --limit autoReboot plays/update-system.yml" }
