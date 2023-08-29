@@ -1,8 +1,0 @@
----
-- name: Configure Tmux
-  hosts: all
-
-  tasks:
-    - include_role:
-        name: ../../roles/common/install-tmux
-        tasks_from: configure_tmux
