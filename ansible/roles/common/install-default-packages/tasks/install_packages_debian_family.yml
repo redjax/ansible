@@ -1,5 +1,4 @@
 ---
-
 ## Debian
 - name: Install required packages on Debian family OS
   become: true
