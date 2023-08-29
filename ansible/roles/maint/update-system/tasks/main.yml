@@ -1,0 +1,11 @@
+---
+# tasks file for update-system
+- include_tasks: update-debian-family.yml
+  when: ansible_facts['os_family'] == "Debian"
+- include_tasks: deb_reboot-for-updates.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+# - include_tasks: rh_reboot-for-updates.yml
+# when: ansible_facts["os_family"] == "RedHat"
+
+- include_tasks: check-uptime.yml

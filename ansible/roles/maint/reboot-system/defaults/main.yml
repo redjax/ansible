@@ -1,0 +1,3 @@
+---
+# defaults file for ansible/roles/maint/reboot-system
+reboot_reason: "Ad-hoc reboot"
