@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/common/install-tmux
+    - ../../roles/common/installs/install-tmux

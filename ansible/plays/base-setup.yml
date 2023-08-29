@@ -3,11 +3,11 @@
   hosts: all
 
   roles:
-    - ../roles/common/install-default-packages
-    - ../roles/common/install-neovim
-    - ../roles/common/install-tmux
-    - ../roles/common/install-duplicati
-    - ../roles/common/install-tailscale
-    - ../roles/common/remove-snaps
+    - ../roles/common/installs/install-default-packages
+    - ../roles/common/installs/install-neovim
+    - ../roles/common/installs/install-tmux
+    - ../roles/common/installs/install-duplicati
+    - ../roles/common/installs/install-tailscale
+    - ../roles/common/configure/remove-snaps
     - ../roles/security/install-firewall
     - ../roles/security/ssh-setup
