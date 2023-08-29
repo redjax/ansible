@@ -1,8 +1,0 @@
----
-- name: Configure Neovim
-  hosts: all
-
-  tasks:
-    - include_role:
-        name: ../../roles/common/install-neovim
-        tasks_from: configure_neovim

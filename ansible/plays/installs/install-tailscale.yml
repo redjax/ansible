@@ -5,4 +5,4 @@
   vars_files:
 
   roles:
-    - ../../roles/common/install-tailscale
+    - ../../roles/common/installs/install-tailscale

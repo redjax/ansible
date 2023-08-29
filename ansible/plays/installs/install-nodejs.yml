@@ -4,11 +4,11 @@
 
   tasks:
     - include_role:
-        name: ../../roles/common/install-neovim
+        name: ../../roles/common/install/install-neovim
         tasks_from: install_nodejs_debian_family.yml
       when: ansible_facts['os_family'] == "Debian"
 
     - include_role:
-        name: ../../roles/common/install-neovim
+        name: ../../roles/common/install/install-neovim
         tasks_from: install_nodejs_redhat_family.yml
       when: ansible_facts['os_family'] == "RedHat"
