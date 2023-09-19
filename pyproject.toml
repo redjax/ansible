@@ -20,5 +20,5 @@ license = {text = "MIT"}
 
 [tool.pdm.scripts]
 
-auto-update = { shell = "cd ansible && pdm run ansible-playbook -i inventories/homelab/inventory.yml --limit autoReboot plays/update-system.yml" }
+auto-update = { shell = "cd ansible && pdm run ansible-playbook -i inventories/homelab/inventory.yml --limit autoReboot plays/maint/update-system.yml" }
 

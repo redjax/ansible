@@ -2,12 +2,20 @@
 - name: Configure systems using Ansible Roles
   hosts: all
 
+  vars:
+    nodejs_ver: "18.x" # For Debian family
+    nodejs_stream: "18" # For RedHat family
+
+    # defaults file for duplicati
+    duplicati_web_port: 8200
+    duplicati_ver: "2.0.7.1-1"
+
   roles:
-    - ../roles/common/installs/install-default-packages
-    - ../roles/common/installs/install-neovim
-    - ../roles/common/installs/install-tmux
-    - ../roles/common/installs/install-duplicati
-    - ../roles/common/installs/install-tailscale
+    - ../roles/common/install/install-default-packages
+    - ../roles/common/install/install-neovim
+    - ../roles/common/install/install-tmux
+    - ../roles/common/install/install-duplicati
+    - ../roles/common/install/install-tailscale
     - ../roles/common/configure/remove-snaps
     - ../roles/security/install-firewall
     - ../roles/security/ssh-setup
