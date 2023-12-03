@@ -1,0 +1,13 @@
+---
+# tasks file for configure/configure-cron
+- name: "[Cron] Check if Cron is installed"
+  ansible.builtin.stat:
+    path: /usr/bin/crontab
+  register: cron_bin
+
+- name: "[All OS Types] [Cron] Create crontab entry"
+  include_tasks: schedule_clear_bash_history.yml
+  when: cron_bin.stat.exists
+
+- name: "[All OS Types] [Cron] Clear Bash history"
+  include_tasks: clear_bash_history.yml

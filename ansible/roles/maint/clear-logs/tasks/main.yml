@@ -1,0 +1,7 @@
+---
+# tasks file for roles/maint/clear-logs
+- name: "Search & delete *.log files"
+  include_tasks: clear_logfiles.yml
+
+- name: "Schedule cron job to search & delete *.log files"
+  include_tasks: schedule_clear_logfiles.yml

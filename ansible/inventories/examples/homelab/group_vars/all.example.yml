@@ -9,13 +9,24 @@ ansible_ssh_user: "ansible_svc"
 ansible_ssh_private_key_file: "/home/user/.ssh/ansible_id_rsa"
 
 ## For path substitution, i.e. "/home/{{ remote_host_user }}"
-remote_host_user: "exampleuser"
+remote_host_user: "user"
 
+## Generate at: https://login.tailscale.com/admin/settings/keys
 tailscale_preauth_key: ""
+
+## Pyenv
+pyenv_python_ver: "3.11.6"
 
 #######
 # Git #
 #######
 git_default_branch_name: "main"
-git_user_name: "username"
-git_user_eail: "email@example.com"
+git_user_name: "git-username"
+git_user_email: "git-email@domain.com"
+
+##########
+# System #
+##########
+
+## For plays that set a DNS server
+dns_ns: "1.1.1.1"

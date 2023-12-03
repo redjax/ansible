@@ -17,6 +17,7 @@
 ## Allow example files
 !**/*.example
 !**/*.example.*
+!*example.*
 !**/*_example
 !**/*_example.*
 !**/example_*
