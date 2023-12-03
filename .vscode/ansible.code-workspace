@@ -23,7 +23,7 @@
         {
             "path": "../ansible/roles",
             "name": "ansible_roles"
-        }
+        },
     ],
     "settings": {
         // ========================
@@ -40,7 +40,7 @@
         "workbench.editor.restoreViewState": true,
         "workbench.editor.revealIfOpen": true,
         "workbench.editor.scrollToSwitchTabs": true,
-        "workbench.editor.showTabs": true,
+        "workbench.editor.showTabs": "multiple",
         "workbench.editor.sharedViewState": true,
         "workbench.editor.tabCloseButton": "left",
         "workbench.editor.tabSizing": "shrink",
@@ -56,7 +56,7 @@
         "editor.codeLens": true,
         "editor.colorDecorators": true,
         "editor.comments.insertSpace": true,
-        "editor.cursorSmoothCaretAnimation": true,
+        "editor.cursorSmoothCaretAnimation": "on",
         "editor.cursorStyle": "block",
         "editor.cursorSurroundingLines": 8,
         "editor.defaultFormatter": "esbenp.prettier-vscode",

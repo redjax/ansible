@@ -1,0 +1,8 @@
+---
+- name: "Clear ~/.bash_history"
+  hosts: all
+
+  tasks:
+    - include_role:
+        name: ../../roles/common/configure/configure-cron
+        tasks_from: clear_bash_history.yml

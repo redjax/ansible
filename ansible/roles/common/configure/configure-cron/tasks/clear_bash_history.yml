@@ -1,0 +1,11 @@
+---
+- name: "[All OS Types] Check if ~/.bash_history exists"
+  stat:
+    path: "/home/{{ remote_host_user }}/.bash_history"
+  become: true
+  register: bash_history
+
+- name: "[All OS Types] Clear ~/.bash_history"
+  ansible.builtin.shell: cat /dev/null > /home/{{ remote_host_user }}/.bash_history
+  when: bash_history.stat.exists
+  become: true
