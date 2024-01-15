@@ -10,4 +10,6 @@
 - include_tasks: restart_clamav_systemd.yml
   when: ("clamav" in ansible_facts.packages)
 
+- include_tasks: configure_clamav.yml
+
 - include_tasks: configure_scans.yml

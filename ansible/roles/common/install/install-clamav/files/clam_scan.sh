@@ -10,6 +10,7 @@ SCAN_TYPE="$1"
 WEEKLY_SCAN_PATHS=("/")
 DAILY_SCAN_PATHS=("/home" "/var" "/bin" "/sbin" "/etc" "/opt")
 
+CLAMAV_QUARANTINE_DIR="/opt/clamav/quarantine"
 CLAMAV_LOG_DIR="/var/log/clamav"
 
 # Set the backup directory path
@@ -22,12 +23,23 @@ REPORT_FILE="$CLAMAV_LOG_DIR/$(date +%Y-%m-%d)/clamscan.report"
 # Create the log and report directories if they don't exist
 mkdir -pv "$(dirname "$LOG_FILE")"
 mkdir -pv "$(dirname "$REPORT_FILE")"
+mkdir -pv "$CLAMAV_QUARANTINE_DIR"
 
 function scan_path() {
     _path="$1"
     echo "Scanning $1"
 
-    clamscan --recursive --infected --exclude-dir="^/sys" "$1" | tee "$LOG_FILE" | grep *"FOUND" >> "REPORT_FILE"
+    ## --recursive: Scan subdirectories
+    ## --multiscan: Speed up processing by using multiple CPU threads
+    ## --fdpass: Run scan as clamd user
+    ## --move: Move infected files to a quarantine directory
+    clamscan \
+        --recursive \
+        --infected \
+        --move="$CLAMAV_QUARANTINE_DIR" \
+        "$1" \
+        | tee "$LOG_FILE" \
+        | grep *"FOUND" >> "$REPORT_FILE"
 
     return $?
 }
