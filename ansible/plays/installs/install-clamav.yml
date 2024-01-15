@@ -1,0 +1,6 @@
+---
+- name: "Install ClamAV"
+  hosts: all
+
+  roles:
+    - ../../roles/common/install/install-clamav
