@@ -30,8 +30,7 @@ function scan_path() {
     echo "Scanning $1"
 
     ## --recursive: Scan subdirectories
-    ## --multiscan: Speed up processing by using multiple CPU threads
-    ## --fdpass: Run scan as clamd user
+    ## --infected: Take action on infected files
     ## --move: Move infected files to a quarantine directory
     clamscan \
         --recursive \
