@@ -92,7 +92,7 @@
         "editor.mouseWheelZoom": true,
         "editor.multiCursorMergeOverlapping": true,
         "editor.multiCursorModifier": "alt",
-        "editor.occurrencesHighlight": true,
+        "editor.occurrencesHighlight": "singleFile",
         "editor.overviewRulerBorder": true,
         "editor.parameterHints.enabled": true,
         "editor.parameterHints.cycle": true,
@@ -114,8 +114,8 @@
         "editor.suggest.showStatusBar": true,
         "editor.tabSize": 2,
         "editor.codeActionsOnSave": {
-            "source.fixAll": false,
-            "source.fixAll.eslint": false
+            "source.fixAll": "never",
+            "source.fixAll.eslint": "never"
         },
         "diffEditor.codeLens": true,
         // Python Configurations
@@ -126,7 +126,8 @@
             "editor.insertSpaces": true,
             "editor.tabSize": 4,
             "editor.formatOnSave": false,
-            "editor.wordBasedSuggestions": false
-        }
+            "editor.wordBasedSuggestions": "off"
+        },
+        "workbench.editor.tabActionLocation": "left"
     }
 }
