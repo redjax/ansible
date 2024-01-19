@@ -30,3 +30,10 @@ git_user_email: "git-email@domain.com"
 
 ## For plays that set a DNS server
 dns_ns: "1.1.1.1"
+
+##########
+# Python #
+##########
+
+pypi_token: ""
+test_pypi_token: ""

@@ -1,0 +1,4 @@
+---
+# tasks file for configure-pypirc
+- name: "Setup .pypirc"
+  include_tasks: copy_pypirc.yml
