@@ -1,0 +1,6 @@
+---
+- name: Configure .pypirc
+  hosts: all
+
+  roles:
+    - ../../roles/common/configure/configure-pypirc
