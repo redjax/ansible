@@ -15,6 +15,11 @@ nox.options.error_on_missing_interpreters = False
 ## Define sessions to run when no session is specified
 nox.sessions = ["lint", "export", "tests"]
 
+ANSIBLE_DIR: Path = Path("./ansible")
+ANSIBLE_INVENTORY_DIR: Path = Path(f"{ANSIBLE_DIR}/inventories")
+ANSIBLE_PLAYS_DIR: Path = Path(f"{ANSIBLE_DIR}/plays")
+ANSIBLE_ROLES_DIR: Path = Path(f"{ANSIBLE_DIR}/roles")
+
 # INIT_COPY_FILES: list[dict[str, str]] = [
 #     {"src": "config/.secrets.example.toml", "dest": "config/.secrets.toml"},
 #     {"src": "config/settings.toml", "dest": "config/settings.local.toml"},
@@ -165,13 +170,12 @@ def run_pre_commit_autoupdate(session: nox.Session):
     session.run("pre-commit", "autoupdate")
 
 
-@nox.session(python=PY_VERSIONS, name="pre-commit-nbstripout")
-def run_pre_commit_nbstripout(session: nox.Session):
-    session.install(f"pre-commit")
+# @nox.session(python=PY_VERSIONS, name="pre-commit-nbstripout")
+# def run_pre_commit_nbstripout(session: nox.Session):
+#     session.install(f"pre-commit")
 
-    print("Running nbstripout pre-commit hook")
-    session.run("pre-commit", "run", "nbstripout")
-
+#     print("Running nbstripout pre-commit hook")
+#     session.run("pre-commit", "run", "nbstripout")
 
 # @nox.session(python=[PY_VER_TUPLE], name="init-setup")
 # def run_initial_setup(session: nox.Session):
