@@ -23,3 +23,11 @@
 !**/example_*
 !**/example_*.*
 .pdm-python
+
+##############
+# Other/Misc #
+##############
+
+.nox
+__pycache__/
+**/*.pyc
