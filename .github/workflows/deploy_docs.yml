@@ -4,7 +4,7 @@ name: Build & Deploy MkDocs site
 on:
   pull_request:
     branches:
-      - main
+      - docs
 
 jobs:
   deploy-mkdocs:
