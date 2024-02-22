@@ -9,7 +9,6 @@ authors = [
 dependencies = [
     "ansible-core>=2.15.2",
     "yamllint>=1.32.0",
-    "ansible-navigator>=3.4.1",
     "ansible-runner>=2.3.3",
     "ansible-doctor>=2.1.1",
     "ara>=1.6.1",

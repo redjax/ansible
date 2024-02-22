@@ -84,7 +84,6 @@
         "editor.inlayHints.enabled": "onUnlessPressed",
         "editor.inlineSuggest.enabled": true,
         "editor.largeFileOptimizations": true,
-        "editor.lightbulb.enabled": true,
         "editor.linkedEditing": true,
         "editor.links": true,
         "editor.matchBrackets": "always",
