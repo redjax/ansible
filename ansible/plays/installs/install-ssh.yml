@@ -1,6 +1,0 @@
----
-- name: Install OpenSSH Server
-  hosts: all
-
-  roles:
-    - ../../roles/security/ssh-setup

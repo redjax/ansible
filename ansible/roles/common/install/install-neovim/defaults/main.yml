@@ -1,5 +1,0 @@
----
-# defaults file for roles/nvim-setup
-
-nodejs_ver: "16.x" # For Debian family
-nodejs_stream: "16" # For RedHat family

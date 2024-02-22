@@ -1,4 +1,0 @@
----
-# defaults file for duplicati
-duplicati_web_port: 8200
-duplicati_ver: "2.0.6.3"

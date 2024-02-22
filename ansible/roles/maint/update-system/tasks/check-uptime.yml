@@ -1,6 +1,0 @@
----
-- name: Check uptime
-  shell: "uptime"
-  register: Uptime
-
-- debug: var=Uptime

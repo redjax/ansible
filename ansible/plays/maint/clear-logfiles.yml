@@ -1,8 +1,0 @@
----
-- name: "Clear all *.log files"
-  hosts: all
-
-  tasks:
-    - include_role:
-        name: ../../roles/maint/clear-logs
-        tasks_from: clear_logfiles.yml

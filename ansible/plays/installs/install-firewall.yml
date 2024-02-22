@@ -1,6 +1,0 @@
----
-- name: Install Firewall
-  hosts: all
-
-  roles:
-    - ../../roles/security/install-firewall

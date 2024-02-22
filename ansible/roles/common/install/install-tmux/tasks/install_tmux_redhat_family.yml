@@ -1,7 +1,0 @@
----
-- name: "[RedHat Family] [Tmux] Install TMUX"
-  yum:
-    name: "tmux"
-    state: present
-  become: true
-  when: ansible_facts['os_family'] == "RedHat"

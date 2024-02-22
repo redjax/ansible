@@ -1,7 +1,0 @@
----
-- name: "[Debian Family] [Tmux] Install TMUX"
-  apt:
-    name: "tmux"
-    state: present
-  become: true
-  when: ansible_facts['os_family'] == "Debian"

@@ -1,7 +1,0 @@
----
-- name: Install firewalld if not installed
-  yum:
-    name: firewalld
-    state: present
-  become: true
-  when: ansible_os_family == "Redhat"

@@ -1,3 +1,0 @@
----
-# tasks file for ansible/roles/maint/reboot-system
-- include_tasks: regular-reboot.yml

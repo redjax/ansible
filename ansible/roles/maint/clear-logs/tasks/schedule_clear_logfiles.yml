@@ -1,8 +1,0 @@
----
-- name: "[Cron] Create task, search & delete log files"
-  ansible.builtin.cron:
-    name: "Remove logs older than 7 days"
-    minute: "*"
-    hour: "*"
-    user: "{{ remote_host_user }}"
-    job: "find /*.log -mtime +7 -exec rm -f {} \\;"
