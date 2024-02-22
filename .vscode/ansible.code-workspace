@@ -5,10 +5,6 @@
             "name": "git_root"
         },
         {
-            "path": "../conda_envs",
-            "name": "conda_envs"
-        },
-        {
             "path": "../ansible",
             "name": "ansible_root"
         },
