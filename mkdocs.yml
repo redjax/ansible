@@ -62,7 +62,7 @@ plugins:
 markdown_extensions:
   - admonition
   - markdown_include.include:
-      base_path: .
+      base_path: ./docs
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
