@@ -4,7 +4,7 @@ My Ansible monorepo. Includes my roles, playbooks, & inventory files.
 
 This repository is a refactor of [my old Ansible repository](https://gitlab.com/redjax/ansihost). It will be missing some things for a while as I re-work roles, playbooks, and directory structure.
 
-This repository uses [Python Poetry](https://python-poetry.org) to stage the Ansible environment. To run this without a Python `virtualenv`, check the [Run without virtualenv](#run-without-virtualenv) section for instructions on installing dependencies straight to the host.
+~This repository uses ~~[Python Poetry](https://python-poetry.org)~~ [PDM](https://pdm-project.org) to stage the Ansible environment. To run this without a Python `virtualenv`, check the [Run without virtualenv](#run-without-virtualenv) section for instructions on installing dependencies straight to the host.
 
 ---
 
@@ -49,7 +49,7 @@ If you would like to use another dependency manager (i.e. [PDM](pdm.fming.dev/))
 
 At minimum, to run Ansible playbooks and commands from this repository, you will need:
 
-- ansible
+- ansible-core
 
 The rest of the packages are optional, but might enhance desired operations, such as [Molecule](https://molecule.readthedocs.io/en/latest/getting-started.html) which aids in testing roles.
 
@@ -60,6 +60,8 @@ The rest of the packages are optional, but might enhance desired operations, suc
 ### Create a new role
 
 Creating a new role involves the following flow:
+
+⚠️ **THIS SECTION IS OUT OF DATE ⚠️
 
 * (Optional, if using `Poetry` environment) Activate poetry env from git root
   * `$ poetry shell`
@@ -74,6 +76,8 @@ Creating a new role involves the following flow:
   * Any playbooks in the root directory are meant to be run on a completely fresh install, or do too much to be grouped into a subdirectory
 
 ### Create playbook for a role
+
+⚠️ **THIS SECTION IS OUT OF DATE ⚠️
 
 After creating a new role, create a playbook to launch the role in `plays/`. Try to follow the existing directory structure to maintain organization.
 
@@ -119,6 +123,8 @@ tasks/
 ```
 
 #### Run only certain tasks from role in a playbook
+
+⚠️ **THIS SECTION IS OUT OF DATE ⚠️
 
 In a playbook, you can include a role and only include tasks from a specific file in the role's `tasks/` directory. For example, the `install-neovim` role installs `nodejs` in the `tasks/install_nodejs_{debian/redhat}_family.yml` task file. The following playbook, called `install-neovim.yml`, will run the `install_nodejs` playbook from the `install-neovim` role:
 
