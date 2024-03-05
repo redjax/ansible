@@ -6,7 +6,7 @@ My collection of Ansible roles, playbooks, & inventories (inventory files are ex
 
 !!! note 
 
-    This project was build with [PDM](https://pdm-project.org/). If you prefer another tool like [Poetry](https://python-poetry.org/), make sure to convert the [`pyproject.toml` file](#) to a Poetry-compatible format.
+    This project was built with [PDM](https://pdm-project.org/). If you prefer another tool like [Poetry](https://python-poetry.org/), make sure to convert the [`pyproject.toml` file](https://github.com/redjax/ansible/blob/main/pyproject.toml) to a Poetry-compatible format.
 
 - (Optional) [`pdm` Python project manager](https://pdm-project.org/)
   - You can also `pip install -r requirements/requirements.txt`

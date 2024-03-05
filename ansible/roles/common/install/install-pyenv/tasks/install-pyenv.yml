@@ -3,6 +3,10 @@
   shell: curl -fsSL https://pyenv.run -o get-pyenv.sh
   args:
     creates: "/home/{{ remote_host_user }}/get-pyenv.sh"
+  become_user: "{{ remote_host_user }}"
+  become: true
 
 - name: "[All OS Types] [Pyenv Setup] Install Pyenv"
   shell: "sh /home/{{ remote_host_user }}/get-pyenv.sh"
+  become_user: "{{ remote_host_user }}"
+  become: true

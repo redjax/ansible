@@ -6,6 +6,12 @@ This repository is a refactor of [my old Ansible repository](https://gitlab.com/
 
 This repository uses [Python Poetry](https://python-poetry.org) to stage the Ansible environment. To run this without a Python `virtualenv`, check the [Run without virtualenv](#run-without-virtualenv) section for instructions on installing dependencies straight to the host.
 
+---
+
+⚠️ **IMPORTANT NOTE**: I am slowly moving most of the contents of this `README` to the [`docs page`](https://redjax.github.io/ansible) for this repository. Things may not be completely up to date.
+
+---
+
 ## Included modules
 
 This repository uses [Python Poetry](https://python-poetry.org) to stage the Ansible environment. `Poetry` Installs environment from `pyproject.toml`.
