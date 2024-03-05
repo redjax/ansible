@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform"]
 lock_version = "4.4.1"
-content_hash = "sha256:9b842bb8c546098e8f5f02ee1340c2e39a08e88126ebfe91af28f7d7b5826937"
+content_hash = "sha256:91a8471976971f776006908d62bbd2810d35fe3a384e427a3902763e8d78148d"
 
 [[package]]
 name = "ansible-core"
@@ -495,6 +495,19 @@ summary = "Python implementation of John Gruber's Markdown."
 files = [
     {file = "Markdown-3.5.2-py3-none-any.whl", hash = "sha256:d43323865d89fc0cb9b20c75fc8ad313af307cc087e84b657d9eec768eddeadd"},
     {file = "Markdown-3.5.2.tar.gz", hash = "sha256:e1ac7b3dc550ee80e602e71c1d168002f062e49f1b11e26a36264dafd4df2ef8"},
+]
+
+[[package]]
+name = "markdown-include"
+version = "0.8.1"
+requires_python = ">=3.7"
+summary = "A Python-Markdown extension which provides an 'include' function"
+dependencies = [
+    "markdown>=3.0",
+]
+files = [
+    {file = "markdown-include-0.8.1.tar.gz", hash = "sha256:1d0623e0fc2757c38d35df53752768356162284259d259c486b4ab6285cdbbe3"},
+    {file = "markdown_include-0.8.1-py3-none-any.whl", hash = "sha256:32f0635b9cfef46997b307e2430022852529f7a5b87c0075c504283e7cc7db53"},
 ]
 
 [[package]]
