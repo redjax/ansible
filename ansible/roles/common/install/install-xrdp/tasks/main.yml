@@ -1,0 +1,14 @@
+---
+# tasks file for install-xrdp
+
+## Get all installed packages
+- name: "[All OS Types] [XRDP] Check packages"
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: "[Debian Family] [XRDP] Install XRDP"
+  include_tasks: install_xrdp_debian_family.yml
+  when: (ansible_facts["os_family"] == "Debian") and ("xrdp" not in ansible_facts.packages)
+
+- name: "[Debian Family] [XRDP] Configure XRDP"
+  include_tasks: configure_firewall.yml

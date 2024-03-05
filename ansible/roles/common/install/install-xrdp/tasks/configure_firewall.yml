@@ -1,0 +1,25 @@
+---
+- name: "[UFW] Allow XRDP port (3389/tcp)"
+  community.general.ufw:
+    rule: "allow"
+    port: "3389"
+    proto: "tcp"
+  become: true
+  when: ansible_facts['os_family'] == "Debian"
+  ignore_errors: true
+
+- name: "[UFW] Allow XRDP port (3389/udp)"
+  community.general.ufw:
+    rule: "allow"
+    port: "3389"
+    proto: "udp"
+  become: true
+  when: ansible_facts['os_family'] == "Debian"
+  ignore_errors: true
+
+- name: Restart UFW service
+  service:
+    name: "ufw"
+    state: "restarted"
+  become: true
+  when: ansible_os_family == "Debian"
