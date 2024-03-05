@@ -4,9 +4,9 @@
 
   vars:
     ## Uncomment to override default value "ansible_svc"
-    # service_user: "ansible_svc"
+    # ansible_ssh_user: "ansible_svc"
     ## Uncomment to override default value
-    # service_ssh_pubkey: "/home/<user>/.ssh/some_id_rsa.pub"
+    # ansible_ssh_pubkey_file: "/home/<user>/.ssh/some_id_rsa.pub"
 
   roles:
     - { role: roles/maint/create-ansible_svc-user }

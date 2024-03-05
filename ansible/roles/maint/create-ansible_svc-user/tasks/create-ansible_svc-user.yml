@@ -13,17 +13,17 @@
     validate: 'visudo -cf %s'
   become: true
 
-- name: " [ADD USER] {{ service_user }} to 'wheel' group"
+- name: " [ADD USER] {{ ansible_ssh_user }} to 'wheel' group"
   user:
-    name="{{ service_user }}"
+    name="{{ ansible_ssh_user }}"
     groups=wheel
     append=yes
     state=present
     createhome=yes
   become: true
 
-- name: " [SETUP] Authorized SSH keys for {{ service_user }}"
-  authorized_key: user="{{ service_user }}" key="{{item}}"
+- name: " [SETUP] Authorized SSH keys for {{ ansible_ssh_user }}"
+  authorized_key: user="{{ ansible_ssh_user }}" key="{{item}}"
   with_file:
-    - "{{ service_ssh_pubkey }}"
+    - "{{ ansible_ssh_pubkey_file }}"
   become: true

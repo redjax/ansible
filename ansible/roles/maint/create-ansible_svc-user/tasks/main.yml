@@ -1,5 +1,5 @@
 ---
 # tasks file for create-ansible_svc-user
 
-- name: "Create {{ service_user }} user"
+- name: "Create {{ ansible_ssh_user }} user"
   include_tasks: create-ansible_svc-user.yml
