@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/security/ssh-setup
+    - { role: roles/security/ssh-setup }

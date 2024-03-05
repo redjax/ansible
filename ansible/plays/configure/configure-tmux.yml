@@ -3,6 +3,6 @@
   hosts: all
 
   tasks:
-    - include_role:
-        name: ../../roles/common/install/install-tmux
+    - ansible.builtin.import_role:
+        name: common/install/install-tmux
         tasks_from: configure_tmux

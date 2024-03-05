@@ -5,4 +5,4 @@
   # vars:
 
   roles:
-    - ../../roles/common/install/install-xrdp
+    - { role: roles/common/install/install-xrdp }

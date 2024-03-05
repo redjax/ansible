@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/maint/update-system
+    - { role: roles/maint/update-system }

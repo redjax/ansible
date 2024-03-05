@@ -4,6 +4,6 @@
 
   tasks:
     - name: "Print CPU architecture"
-      debug:
+      ansible.builtin.debug:
         ## Use ansible_architecture builtin
         msg: "CPU Architecture: {{ ansible_architecture }}"
