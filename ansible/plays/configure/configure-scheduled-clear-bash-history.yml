@@ -3,6 +3,9 @@
   hosts: all
 
   tasks:
-    - include_role:
-        name: ../../roles/common/configure/configure-cron
+    # - include_role:
+    #     name: ../../roles/common/configure/configure-cron
+    #     tasks_from: schedule_clear_bash_history.yml
+    - ansible.builtin.import_role:
+        name: common/configure/configure-cron
         tasks_from: schedule_clear_bash_history.yml
