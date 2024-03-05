@@ -2,23 +2,23 @@
     "folders": [
         {
             "path": "../",
-            "name": "git_root"
+            "name": "Git Root"
         },
         {
             "path": "../ansible",
-            "name": "ansible_root"
+            "name": "Ansible Root"
         },
         {
             "path": "../ansible/inventories",
-            "name": "ansible_inventories"
+            "name": "Ansible Inventories"
         },
         {
             "path": "../ansible/plays",
-            "name": "ansible_playbooks"
+            "name": "Ansible Playbooks"
         },
         {
             "path": "../ansible/roles",
-            "name": "ansible_roles"
+            "name": "Ansible Roles"
         },
     ],
     "settings": {
