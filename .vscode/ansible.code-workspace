@@ -5,6 +5,10 @@
             "name": "Git Root"
         },
         {
+            "path": "../docs",
+            "name": "Ansible Docs"
+        },
+        {
             "path": "../ansible",
             "name": "Ansible Root"
         },
@@ -19,7 +23,7 @@
         {
             "path": "../ansible/roles",
             "name": "Ansible Roles"
-        },
+        }
     ],
     "settings": {
         // ========================
