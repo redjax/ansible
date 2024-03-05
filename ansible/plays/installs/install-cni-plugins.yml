@@ -3,6 +3,7 @@
   hosts: all
 
   vars:
+    ## TODO: Move cni_* vars to group_vars for inventory
     cni_app: cni
     cni_version: 1.3.0
     cni_os: linux
@@ -13,4 +14,4 @@
     cni_plugins_dir_mode: "0755"
 
   roles:
-    - ../../roles/common/install/install-cni-plugins
+    - { role: roles/common/install/install-cni-plugins }

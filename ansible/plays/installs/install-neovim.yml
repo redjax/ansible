@@ -7,4 +7,4 @@
     nodejs_stream: "18" # For RedHat family
 
   roles:
-    - ../../roles/common/install/install-neovim
+    - { role: roles/common/install/install-neovim }

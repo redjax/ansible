@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/common/uninstall/uninstall-hashi-apps
+    - { role: roles/common/uninstall/uninstall-hashi-apps }

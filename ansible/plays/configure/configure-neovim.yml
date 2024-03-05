@@ -3,6 +3,6 @@
   hosts: all
 
   tasks:
-    - include_role:
-        name: ../../roles/common/install/install-neovim
+    - ansible.builtin.import_role:
+        name: common/install/install-neovim
         tasks_from: configure_neovim

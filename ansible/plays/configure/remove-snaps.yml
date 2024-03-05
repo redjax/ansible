@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/common/configure/remove-snaps
+    - { role: roles/common/configure/remove-snaps }

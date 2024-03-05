@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/common/configure/configure-dotfiles
+    - { role: roles/common/configure/configure-dotfiles }

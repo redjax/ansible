@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/security/install-firewall
+    - { role: roles/security/install-firewall }

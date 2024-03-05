@@ -3,4 +3,4 @@
   hosts: all
 
   roles:
-    - ../../roles/common/install-proxmox-qemu-agent
+    - { role: roles/common/install-proxmox-qemu-agent }

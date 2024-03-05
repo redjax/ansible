@@ -1,0 +1,8 @@
+---
+- name: Install XRDP
+  hosts: guiEnabled
+
+  # vars:
+
+  roles:
+    - { role: roles/common/install/install-xrdp }

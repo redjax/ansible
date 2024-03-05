@@ -4,15 +4,15 @@
 
   tasks:
     - name: "Uninstall Consul"
-      include_role:
-        name: ../../roles/common/uninstall/uninstall-hashi-apps
+      ansible.builtin.import_role:
+        name: common/uninstall/uninstall-hashi-apps
         tasks_from: uninstall-consul.yml
 
     - name: "Post-Uninstall Consul Cleanup"
-      include_role:
-        name: ../../roles/common/uninstall/uninstall-hashi-apps
+      ansible.builtin.import_role:
+        name: common/uninstall/uninstall-hashi-apps
         tasks_from: uninstall-consul_cleanup.yml
 
     - name: "Reboot server. Reason: Consul uninstall"
-      include_role:
-        - ../../roles/maint/reboot-system
+      ansible.builtin.import_role:
+        - maint/reboot-system

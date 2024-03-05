@@ -1,0 +1,12 @@
+---
+- name: "Configure Ansible service user account"
+  hosts: onboard
+
+  vars:
+    ## Uncomment to override default value "ansible_svc"
+    # ansible_ssh_user: "ansible_svc"
+    ## Uncomment to override default value
+    # ansible_ssh_pubkey_file: "/home/<user>/.ssh/some_id_rsa.pub"
+
+  roles:
+    - { role: roles/maint/create-ansible_svc-user }

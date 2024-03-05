@@ -12,4 +12,4 @@
   #   reboot_reason: "Planned reboot"
 
   roles:
-    - ../../roles/maint/reboot-system
+    - { role: roles/maint/reboot-system }

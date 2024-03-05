@@ -1,0 +1,29 @@
+- name: " [CHECK] 'wheel' group exists"
+  group:
+    name: wheel
+    state: present
+  become: true
+
+- name: " [CHECK] Allow 'wheel' group passwordless sudo"
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+  become: true
+
+- name: " [ADD USER] {{ ansible_ssh_user }} to 'wheel' group"
+  user:
+    name="{{ ansible_ssh_user }}"
+    groups=wheel
+    append=yes
+    state=present
+    createhome=yes
+  become: true
+
+- name: " [SETUP] Authorized SSH keys for {{ ansible_ssh_user }}"
+  authorized_key: user="{{ ansible_ssh_user }}" key="{{item}}"
+  with_file:
+    - "{{ ansible_ssh_pubkey_file }}"
+  become: true

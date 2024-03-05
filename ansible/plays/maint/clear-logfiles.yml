@@ -3,6 +3,6 @@
   hosts: all
 
   tasks:
-    - include_role:
-        name: ../../roles/maint/clear-logs
+    - ansible.builtin.import_role:
+        name: maint/clear-logs
         tasks_from: clear_logfiles.yml

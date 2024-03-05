@@ -8,4 +8,4 @@
     duplicati_ver: "2.0.6.3"
 
   roles:
-    - ../../roles/common/install/install-duplicati
+    - { role: roles/common/install/install-duplicati }

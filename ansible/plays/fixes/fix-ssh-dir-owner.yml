@@ -3,6 +3,6 @@
   hosts: all
 
   tasks:
-    - include_role:
-        name: ../../roles/security/ssh-setup
+    - ansible.builtin.import_role:
+        name: security/ssh-setup
         tasks_from: fix_ssh_dir_owner
